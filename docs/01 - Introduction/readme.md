@@ -122,3 +122,56 @@ if we want to access the title property from the `app.component.html` file, we c
 Angular uses MVC architecture, where `app.component.ts` is the controller, `app.component.html` is the view and `app.component.css` is the style.
 
 ## 006 Why Angular Learn the Key Features of Angular Core
+
+let's add a input element in the `app.component.html` file
+
+```html
+<input class="demo" [value]="title">
+```
+
+by using the above syntax, we can bind the value of the input element to the title property of the component.
+
+if we want to pass a string
+
+![alt text](image-4.png)
+
+or just use the plain string
+
+![alt text](image-5.png)
+
+to handle `events` in angular, we can use the following syntax
+
+```html
+<button (click)="onButtonClicked()">Click me</button>
+```
+
+```typescript
+onButtonClicked(){
+  console.log('Button clicked');
+}
+```
+
+we can use `Template Reference Variables` to access the input element in the component.
+
+```html
+<input class="demo" [value]="title" #inputRef>
+<button (click)="onButtonClicked(inputRef)">Click me</button>
+```
+
+```typescript
+onButtonClicked(inputRef: HTMLInputElement){
+  console.log(inputRef.value);
+}
+```
+
+angular also escapes the html by default, if we want to render the html as it is, we can use the following syntax
+
+```html
+<p [innerHTML]="title"></p>
+```
+
+if not, angular will escape the html
+
+```html
+<p>{{title}}</p>
+```
